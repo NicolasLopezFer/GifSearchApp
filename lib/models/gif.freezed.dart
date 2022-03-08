@@ -22,9 +22,10 @@ Gif _$GifFromJson(Map<String, dynamic> json) {
 class _$GifTearOff {
   const _$GifTearOff();
 
-  _Gif call({String? id}) {
+  _Gif call({String? id, Map<String, Image>? images}) {
     return _Gif(
       id: id,
+      images: images,
     );
   }
 
@@ -39,6 +40,7 @@ const $Gif = _$GifTearOff();
 /// @nodoc
 mixin _$Gif {
   String? get id => throw _privateConstructorUsedError;
+  Map<String, Image>? get images => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -49,7 +51,7 @@ mixin _$Gif {
 abstract class $GifCopyWith<$Res> {
   factory $GifCopyWith(Gif value, $Res Function(Gif) then) =
       _$GifCopyWithImpl<$Res>;
-  $Res call({String? id});
+  $Res call({String? id, Map<String, Image>? images});
 }
 
 /// @nodoc
@@ -63,12 +65,17 @@ class _$GifCopyWithImpl<$Res> implements $GifCopyWith<$Res> {
   @override
   $Res call({
     Object? id = freezed,
+    Object? images = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
+      images: images == freezed
+          ? _value.images
+          : images // ignore: cast_nullable_to_non_nullable
+              as Map<String, Image>?,
     ));
   }
 }
@@ -78,7 +85,7 @@ abstract class _$GifCopyWith<$Res> implements $GifCopyWith<$Res> {
   factory _$GifCopyWith(_Gif value, $Res Function(_Gif) then) =
       __$GifCopyWithImpl<$Res>;
   @override
-  $Res call({String? id});
+  $Res call({String? id, Map<String, Image>? images});
 }
 
 /// @nodoc
@@ -93,12 +100,17 @@ class __$GifCopyWithImpl<$Res> extends _$GifCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
+    Object? images = freezed,
   }) {
     return _then(_Gif(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
+      images: images == freezed
+          ? _value.images
+          : images // ignore: cast_nullable_to_non_nullable
+              as Map<String, Image>?,
     ));
   }
 }
@@ -106,16 +118,18 @@ class __$GifCopyWithImpl<$Res> extends _$GifCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Gif implements _Gif {
-  _$_Gif({this.id});
+  _$_Gif({this.id, this.images});
 
   factory _$_Gif.fromJson(Map<String, dynamic> json) => _$$_GifFromJson(json);
 
   @override
   final String? id;
+  @override
+  final Map<String, Image>? images;
 
   @override
   String toString() {
-    return 'Gif(id: $id)';
+    return 'Gif(id: $id, images: $images)';
   }
 
   @override
@@ -123,12 +137,15 @@ class _$_Gif implements _Gif {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Gif &&
-            const DeepCollectionEquality().equals(other.id, id));
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.images, images));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(id));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(images));
 
   @JsonKey(ignore: true)
   @override
@@ -142,12 +159,14 @@ class _$_Gif implements _Gif {
 }
 
 abstract class _Gif implements Gif {
-  factory _Gif({String? id}) = _$_Gif;
+  factory _Gif({String? id, Map<String, Image>? images}) = _$_Gif;
 
   factory _Gif.fromJson(Map<String, dynamic> json) = _$_Gif.fromJson;
 
   @override
   String? get id;
+  @override
+  Map<String, Image>? get images;
   @override
   @JsonKey(ignore: true)
   _$GifCopyWith<_Gif> get copyWith => throw _privateConstructorUsedError;

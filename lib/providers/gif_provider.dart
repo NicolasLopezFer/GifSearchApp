@@ -15,6 +15,7 @@ class GifProvider extends ChangeNotifier {
       setListGif = await _service.searchGifs(search: search);
 
       setGifState = GifState.Idle;
+      notifyListeners();
     } catch (e) {
       print(e);
       setGifState = GifState.Failed;
@@ -23,10 +24,12 @@ class GifProvider extends ChangeNotifier {
 
   Future getTrendingGifs(BuildContext context) async {
     try {
-      setGifState = GifState.Fetching;
       setListGif = await _service.trendingGifs();
 
+      print(getListGif);
+
       setGifState = GifState.Idle;
+      notifyListeners();
     } catch (e) {
       print(e);
       setGifState = GifState.Failed;

@@ -22,9 +22,11 @@ Image _$ImageFromJson(Map<String, dynamic> json) {
 class _$ImageTearOff {
   const _$ImageTearOff();
 
-  _Image call({Map<String, SizeImage>? images}) {
+  _Image call({String? height, String? width, String? url}) {
     return _Image(
-      images: images,
+      height: height,
+      width: width,
+      url: url,
     );
   }
 
@@ -38,7 +40,9 @@ const $Image = _$ImageTearOff();
 
 /// @nodoc
 mixin _$Image {
-  Map<String, SizeImage>? get images => throw _privateConstructorUsedError;
+  String? get height => throw _privateConstructorUsedError;
+  String? get width => throw _privateConstructorUsedError;
+  String? get url => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -49,7 +53,7 @@ mixin _$Image {
 abstract class $ImageCopyWith<$Res> {
   factory $ImageCopyWith(Image value, $Res Function(Image) then) =
       _$ImageCopyWithImpl<$Res>;
-  $Res call({Map<String, SizeImage>? images});
+  $Res call({String? height, String? width, String? url});
 }
 
 /// @nodoc
@@ -62,13 +66,23 @@ class _$ImageCopyWithImpl<$Res> implements $ImageCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? images = freezed,
+    Object? height = freezed,
+    Object? width = freezed,
+    Object? url = freezed,
   }) {
     return _then(_value.copyWith(
-      images: images == freezed
-          ? _value.images
-          : images // ignore: cast_nullable_to_non_nullable
-              as Map<String, SizeImage>?,
+      height: height == freezed
+          ? _value.height
+          : height // ignore: cast_nullable_to_non_nullable
+              as String?,
+      width: width == freezed
+          ? _value.width
+          : width // ignore: cast_nullable_to_non_nullable
+              as String?,
+      url: url == freezed
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -78,7 +92,7 @@ abstract class _$ImageCopyWith<$Res> implements $ImageCopyWith<$Res> {
   factory _$ImageCopyWith(_Image value, $Res Function(_Image) then) =
       __$ImageCopyWithImpl<$Res>;
   @override
-  $Res call({Map<String, SizeImage>? images});
+  $Res call({String? height, String? width, String? url});
 }
 
 /// @nodoc
@@ -92,13 +106,23 @@ class __$ImageCopyWithImpl<$Res> extends _$ImageCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? images = freezed,
+    Object? height = freezed,
+    Object? width = freezed,
+    Object? url = freezed,
   }) {
     return _then(_Image(
-      images: images == freezed
-          ? _value.images
-          : images // ignore: cast_nullable_to_non_nullable
-              as Map<String, SizeImage>?,
+      height: height == freezed
+          ? _value.height
+          : height // ignore: cast_nullable_to_non_nullable
+              as String?,
+      width: width == freezed
+          ? _value.width
+          : width // ignore: cast_nullable_to_non_nullable
+              as String?,
+      url: url == freezed
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -106,17 +130,21 @@ class __$ImageCopyWithImpl<$Res> extends _$ImageCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Image implements _Image {
-  _$_Image({this.images});
+  _$_Image({this.height, this.width, this.url});
 
   factory _$_Image.fromJson(Map<String, dynamic> json) =>
       _$$_ImageFromJson(json);
 
   @override
-  final Map<String, SizeImage>? images;
+  final String? height;
+  @override
+  final String? width;
+  @override
+  final String? url;
 
   @override
   String toString() {
-    return 'Image(images: $images)';
+    return 'Image(height: $height, width: $width, url: $url)';
   }
 
   @override
@@ -124,12 +152,17 @@ class _$_Image implements _Image {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Image &&
-            const DeepCollectionEquality().equals(other.images, images));
+            const DeepCollectionEquality().equals(other.height, height) &&
+            const DeepCollectionEquality().equals(other.width, width) &&
+            const DeepCollectionEquality().equals(other.url, url));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(images));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(height),
+      const DeepCollectionEquality().hash(width),
+      const DeepCollectionEquality().hash(url));
 
   @JsonKey(ignore: true)
   @override
@@ -143,12 +176,16 @@ class _$_Image implements _Image {
 }
 
 abstract class _Image implements Image {
-  factory _Image({Map<String, SizeImage>? images}) = _$_Image;
+  factory _Image({String? height, String? width, String? url}) = _$_Image;
 
   factory _Image.fromJson(Map<String, dynamic> json) = _$_Image.fromJson;
 
   @override
-  Map<String, SizeImage>? get images;
+  String? get height;
+  @override
+  String? get width;
+  @override
+  String? get url;
   @override
   @JsonKey(ignore: true)
   _$ImageCopyWith<_Image> get copyWith => throw _privateConstructorUsedError;
