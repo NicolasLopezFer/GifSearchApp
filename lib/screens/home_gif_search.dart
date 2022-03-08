@@ -1,7 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:gif_app/providers/gif_provider.dart';
+import 'package:provider/provider.dart';
 
-class HomeGifSearch extends StatelessWidget {
+class HomeGifSearch extends StatefulWidget {
   const HomeGifSearch({Key? key}) : super(key: key);
+
+  @override
+  State<HomeGifSearch> createState() => _HomeGifSearchState();
+}
+
+class _HomeGifSearchState extends State<HomeGifSearch> {
+  @override
+  void initState() {
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+      context.read<GifProvider>().getTrendingGifs(context);
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
