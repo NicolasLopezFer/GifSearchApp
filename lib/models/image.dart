@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:gif_app/models/size_image.dart';
 
 part 'image.freezed.dart';
 part 'image.g.dart';
