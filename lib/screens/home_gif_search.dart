@@ -37,29 +37,37 @@ class _HomeGifSearchState extends State<HomeGifSearch> {
                 );
               }
 
-              if (data.item1!.length == 0) {
-                return Center(
-                  child: Text("No se encontaron gifs"),
-                );
-              }
-
               return Column(
                 children: [
-                  TextField(),
+                  TextField(
+                    onChanged: (String search) {
+                      if (search.isEmpty) {
+                        context.read<GifProvider>().getTrendingGifs(context);
+                      } else {
+                        context.read<GifProvider>().searchGifs(context, search);
+                      }
+                    },
+                  ),
                   SizedBox(height: 20),
                   data.item2 == GifState.Fetching
-                      ? Center(
-                          child: CircularProgressIndicator(),
-                        )
-                      : Flexible(
-                          child: ListView(
-                            children: [
-                              GifColumnsScreen(
-                                gifs: data.item1!,
-                              )
-                            ],
+                      ? Expanded(
+                          child: Center(
+                            child: CircularProgressIndicator(),
                           ),
                         )
+                      : data.item1!.length == 0
+                          ? Center(
+                              child: Text("No se encontaron resultados"),
+                            )
+                          : Flexible(
+                              child: ListView(
+                                children: [
+                                  GifColumnsScreen(
+                                    gifs: data.item1!,
+                                  )
+                                ],
+                              ),
+                            )
                 ],
               );
             },
