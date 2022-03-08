@@ -40,6 +40,12 @@ class _HomeGifSearchState extends State<HomeGifSearch> {
               return Column(
                 children: [
                   TextField(
+                    decoration: InputDecoration(
+                      hintText: '🔍️ Search by name',
+                      label: Text('🔍️ Search by name'),
+                      border: OutlineInputBorder(),
+                      fillColor: Colors.blue[300],
+                    ),
                     onChanged: (String search) {
                       if (search.isEmpty) {
                         context.read<GifProvider>().getTrendingGifs(context);
